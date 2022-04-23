@@ -1,0 +1,33 @@
+<div class="card mb-3 border-secondary" style="width: 300px;">
+    <a href="#" target="_blank">
+      <img
+        [src]="post.ImageUrl"
+        style="height: 300px; width: 300px;"
+
+      />
+    </a>
+    <div class="card-body">
+      <h5 class="card-title text-primary text-uppercase">
+        {{post.Location}}
+      </h5>
+      <p class="card-text">{{post.Description | uppercase}}</p>
+      <p class="card-text">
+        <small class="text-muted">by:- {{post.By}}</small>
+      </p>
+    </div>
+    <div
+      class="card-footer bg-transparent border-secondary d-flex justify-content-around align-content-center"
+    >
+      <div (click)="upvotePost()" class="text-primary">
+        <fa-icon [icon]="faThumbsUp" size="lg" primaryColor="blue"></fa-icon>
+        {{ 1 }}
+      </div>
+      <div (click)="downvotePost()" class="text-secondary">
+        <fa-icon [icon]="faThumbsDown" size="lg" primaryColor="blue"></fa-icon>
+        {{ 0 }}
+      </div>
+      <a [href]="getInstaUrl()" target="_blank" class="text-primary">
+        <fa-icon [icon]="faShareSquare" size="lg" primaryColor="blue"></fa-icon>
+      </a>
+    </div>
+  </div>

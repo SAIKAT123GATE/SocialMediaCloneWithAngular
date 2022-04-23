@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary container-fluid">
+  <a class="navbar-brand" [routerLink]="['/']">
+    <img
+      src="../../../assets/img.png"
+      width="30"
+      height="30"
+      class="d-inline-block align-top"
+      alt=""
+    />
+    Saikat Social Network
+  </a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ms-auto">
+      <!-- if the user is present then printing email -->
+      <div class="navbar-text float-end" *ngIf="email">
+        {{ email }}
+      </div>
+      <a
+        routerLinkActive="active"
+        [routerLink]="['/']"
+        class="nav-item nav-link"
+        *ngIf="email"
+        >Home</a
+      >
+      <!-- conditionally rendering links  -->
+      <a
+        routerLinkActive="active"
+        *ngIf="!email"
+        [routerLink]="['/login']"
+        class="nav-item nav-link"
+        >Log In</a
+      >
+      <a
+        routerLinkActive="active"
+        *ngIf="!email"
+        [routerLink]="['/signup']"
+        class="nav-item nav-link"
+        >Sign Up</a
+      >
+
+      <a *ngIf="email" (click)="logOut()" class="nav-item nav-link text-warning"
+        >Log Out</a
+      >
+
+      <a
+        [routerLink]="['/addpost']"
+        class="nav-item nav-link btn btn-warning text-primary"
+        *ngIf="email"
+      >
+        Post Your Story</a
+      >
+    </div>
+  </div>
+</nav>
