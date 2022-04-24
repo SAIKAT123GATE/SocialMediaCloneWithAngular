@@ -13,25 +13,22 @@ export class HomeComponent implements OnInit {
 
   posts:any=[];
   users:any=[];
+  isLoading=false;
   constructor(private readonly afs: AngularFirestore) {
-
+    this.isLoading=true;
     this.postsCollection = afs.collection<any>('posts');
-    // .snapshotChanges() returns a DocumentChangeAction[], which contains
-    // a lot of information about "what happened" with each change. If you want to
-    // get the data and the id use the map operator.
-     this.postsCollection.valueChanges().subscribe((data)=>{
-      console.log("data=>",data)
+     this.postsCollection.valueChanges({ idField: 'id' }).subscribe((data)=>{
       this.posts=data;
+      console.log("this.posts=>",this.posts);
+      this.isLoading=false;
     })
 
 
     this.usersCollection = afs.collection<any>('usersTable');
-    // .snapshotChanges() returns a DocumentChangeAction[], which contains
-    // a lot of information about "what happened" with each change. If you want to
-    // get the data and the id use the map operator.
      this.usersCollection.valueChanges().subscribe((data)=>{
 
       this.users=data;
+      this.isLoading=false;
     })
 
 

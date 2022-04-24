@@ -1,27 +1,36 @@
-<div class="container">
-  <div class="row m-5">
-    <div class="col col-md-7">
-      <!-- will render list of post here -->
-      <div *ngFor="let post of posts">
-        <app-post [post]="post"></app-post>
+<div
+  *ngIf="isLoading; else Content"
+  class="d-flex justify-content-center align-items-center min-vh-100"
+>
+  <div
+    class="spinner-border text-dark"
+    style="width: 3rem; height: 3rem"
+    role="status"
+  ></div>
+</div>
+
+<ng-template #Content>
+  <div class="container">
+    <div class="row m-5">
+      <div class="col col-md-7" *ngIf="posts.length">
+        <!-- will render list of post here -->
+        <div *ngFor="let post of posts" >
+          <app-post [post]="post"></app-post>
+        </div>
       </div>
-    </div>
-    <div class="col col-md-5 sticky-top" >
-      <p class="text-muted text-uppercase text-center" >Recent new User</p>
-      <div *ngFor="let user of users" >
-        <app-users [user]="user"></app-users>
+      <div class="col col-md-7" *ngIf="posts.length==0">
+        <!-- will render list of post here -->
+
+          <h4>No post Available</h4>
+
+      </div>
+
+      <div class="col col-md-5 sticky-top">
+        <p class="text-muted text-uppercase text-center">Recent new User</p>
+        <div *ngFor="let user of users">
+          <app-users [user]="user"></app-users>
+        </div>
       </div>
     </div>
   </div>
-
-  <!-- <div
-      *ngIf="isLoading; else Content"
-      class="d-flex justify-content-center align-items-center min-vh-100"
-    >
-      <div
-        class="spinner-border text-light"
-        style="width: 3rem; height: 3rem;"
-        role="status"
-      ></div>
-    </div> -->
-</div>
+</ng-template>

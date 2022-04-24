@@ -7,14 +7,13 @@ import { AuthService } from 'src/app/service/auth.service';
 import { Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  picture: string = "https://learnyst.s3.amazonaws.com/assets/schools/2410/resources/images/logo_lco_i3oab.png";
+  picture: string = "../../../assets/user-244.png";
   uploadPercent: any = null;
 
   name!: string;

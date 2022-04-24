@@ -3,7 +3,7 @@ import { ToastrService } from "ngx-toastr";
 import { Router } from "@angular/router";
 import { map, finalize } from "rxjs/operators";
 import { Observable } from "rxjs";
-
+// import {  uuid } from "uuidv4";
 
 //angular form
 import { NgForm } from "@angular/forms";
@@ -26,6 +26,7 @@ export class AddpostComponent implements OnInit {
   picture: any = null;
 
   userName: any = null;
+  user:any=null;
   uploadPercent: any = null;
   postCollection: any;
   userCollection: any;
@@ -42,8 +43,9 @@ export class AddpostComponent implements OnInit {
 
           data.map((eachData: any) => {
             if (eachData.id === user?.uid) {
+              this.user=eachData;
               this.userName = eachData.name;
-              console.log("userName=>", this.userName)
+              console.log("userName=>", this.user)
             }
           })
 
@@ -56,12 +58,15 @@ export class AddpostComponent implements OnInit {
 
 
   addPost() {
+
     var tempObj = {
+
       location: this.locationName,
       Description: this.description,
       ImageUrl: this.picture,
       By: this.userName,
-      // instaId: this.user.instaUserName,
+      vote:[],
+      instaId: this.user.instagramId,
       date: Date.now(),
     }
 

@@ -18,13 +18,13 @@
     <div
       class="card-footer bg-transparent border-secondary d-flex justify-content-around align-content-center"
     >
-      <div (click)="upvotePost()" class="text-primary">
+      <div (click)="upvotePost(post.id)" class="text-primary">
         <fa-icon [icon]="faThumbsUp" size="lg" primaryColor="blue"></fa-icon>
-        {{ 1 }}
+        {{ upvote }}
       </div>
-      <div (click)="downvotePost()" class="text-secondary">
+      <div (click)="downvotePost(post.id)" class="text-secondary">
         <fa-icon [icon]="faThumbsDown" size="lg" primaryColor="blue"></fa-icon>
-        {{ 0 }}
+        {{ downvote }}
       </div>
       <a [href]="getInstaUrl()" target="_blank" class="text-primary">
         <fa-icon [icon]="faShareSquare" size="lg" primaryColor="blue"></fa-icon>
